@@ -1,38 +1,25 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+#d486574ef229,
+#d486574ef229 * {padding: 0; margin: 0; border: 0 none transparent; font-family: sans-serif; font-size: 14px;}
+#d486574ef229 {border-spacing: 0;}
+#d486574ef229 td {text-align: left; vertical-align: top; padding: 4px 8px 4px 0; background-color: #ddd; border-bottom: 8px solid #fff;}
+#d486574ef229 input,
+#d486574ef229 button,
+#d486574ef229 .unit {border: 1px solid #888; box-sizing: content-box; padding: 0 2px 0 4px;}
+#d486574ef229 button {background-color: #fcc;}
+#d486574ef229 .type {padding: 0 8px 0 0; border-top-left-radius: 8px; border-bottom-left-radius: 16px;}
+#d486574ef229 .type {padding: 0 8px 0 0; border-top-left-radius: 8px; border-bottom-left-radius: 16px;}
+#d486574ef229 .type.new {padding: 0; background-color: transparent;}
+#d486574ef229 .level {}
+#d486574ef229 .delete {padding: 0 8px 0 0; background-color: transparent; border-top-right-radius: 8px; border-bottom-right-radius: 8px;}
+#d486574ef229 .type input {padding: 0 4px; width: 200px; line-height: 57px; height: 57px; border-top-left-radius: 8px; border-bottom-left-radius: 8px;}
+#d486574ef229 .type.new input {border-radius: 8px;}
+#d486574ef229 .level button {width: 17px; line-height: 49px; height: 49px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; float: right;}
+#d486574ef229 .delete button {width: 21px; line-height: 57px; height: 57px; border-top-right-radius: 8px; border-bottom-right-radius: 8px;}
+#d486574ef229 .level div {margin-right: 25px;}
+#d486574ef229 .level input {text-align: right; line-height: 24px; height: 24px;}
+#d486574ef229 .level .unit {display: inline-block; background-color: #eee; margin-right: 0; padding: 0 4px 0 2px; height: 24px; line-height: 24px;}
+#d486574ef229 .max .unit {width: 28px; border-style: solid none none none;}
+#d486574ef229 .max input {width: 90px; border-top-left-radius: 8px; border-style: solid none none solid;}
+#d486574ef229 .price .unit {width: 40px; border-style: solid none solid none;}
+#d486574ef229 .price input {width: 78px; border-bottom-left-radius: 8px; border-style: solid none solid solid;}
+#d486574ef229 input:invalid {box-shadow: 1px 1px 5px #c00 inset; background-color: #fee;}
