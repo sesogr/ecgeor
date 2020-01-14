@@ -6,9 +6,9 @@ export function addType(name) {
         payload: {name}
     };
 }
-export function renameType(index, newName) {
+export function renameType(typeIndex, newName) {
     return {
         type: RENAME_TYPE,
-        payload: {index, newName}
+        payload: {typeIndex, newName}
     };
 }
