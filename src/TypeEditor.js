@@ -3,8 +3,8 @@ import './App.css';
 import {connect} from "react-redux";
 import {renameType} from "./actions";
 
-function TypeEditor({name, levels, index, renameType}) {
-    const onChange = e => renameType(index, e.target.value);
+function TypeEditor({name, levels, typeIndex, renameType}) {
+    const onChange = e => renameType(typeIndex, e.target.value);
     return (
         <tr>
             <td className="type"><input autoFocus={true} type="text" value={name} onChange={onChange}/></td>
@@ -14,6 +14,6 @@ function TypeEditor({name, levels, index, renameType}) {
 }
 
 export default connect(
-    (state, props) => state.types[props.index],
+    (state, props) => state.types[props.typeIndex],
     {renameType}
 )(TypeEditor);
