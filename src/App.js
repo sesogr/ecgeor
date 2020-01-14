@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
 import {connect} from "react-redux";
-import {addType} from "./actions";
 import TypeEditor from "./TypeEditor";
+import {addType} from "./actionCreators";
 
 function App({types, addType}) {
     const createTypeEditor = e => {

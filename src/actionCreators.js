@@ -1,12 +1,14 @@
+import {ADD_TYPE, RENAME_TYPE} from "./actionTypes";
+
 export function addType(name) {
     return {
-        type: 'ADD_TYPE',
+        type: ADD_TYPE,
         payload: {name}
     };
 }
 export function renameType(index, newName) {
     return {
-        type: 'RENAME_TYPE',
+        type: RENAME_TYPE,
         payload: {index, newName}
     };
 }

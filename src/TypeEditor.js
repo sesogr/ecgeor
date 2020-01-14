@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import {connect} from "react-redux";
-import {renameType} from "./actions";
+import {renameType} from "./actionCreators";
 import LevelEditor from "./LevelEditor";
 
 function TypeEditor({name, levels, typeIndex, renameType}) {
