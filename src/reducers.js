@@ -1,9 +1,6 @@
 function types (state = [], {type, payload}) {
     switch (type) {
-        case 'ADD_TYPE': return [
-            ...state,
-            {name: payload.name, levels: []}
-        ];
+        case 'ADD_TYPE': return state.concat([{name: payload.name, levels: []}]);
         case 'RENAME_TYPE': return state.map((type, index) =>
             index === payload.index
                 ? Object.assign({}, type, {name: payload.newName})
