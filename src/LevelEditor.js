@@ -4,12 +4,6 @@ import {connect} from "react-redux";
 import {deleteLevel, repriceLevel, shiftLevel} from "./actionCreators";
 
 function LevelEditor({max, price, typeIndex, levelIndex, repriceLevel, shiftLevel, deleteLevel}) {
-    const format = (n, p) => {
-        const [, head, tail] = Math.trunc(n).toString().match(/^(\d+?)((?:\d{3})*)$/);
-        const result = parseInt(head) ? head + tail.replace(/(...)/g, '.$1') + ',' + (n * parseFloat('10e+' + p)).toString().substr(-p - 1, p) : '';
-        console.log(n, p, head, tail, result);
-        return result;
-    };
     return (
         <td className="level">
             <button tabIndex={-1} onClick={() => deleteLevel(typeIndex, levelIndex)}>×</button>
