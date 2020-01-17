@@ -1,13 +1,34 @@
-import {ADD_LEVEL, ADD_TYPE, DELETE_LEVEL, DELETE_TYPE, RENAME_TYPE, REPRICE_LEVEL, SHIFT_LEVEL} from "./actionTypes";
+import {
+    ADD_LEVEL,
+    ADD_TYPE,
+    CHANGE_DEFAULT_STATE_OF_TYPE,
+    DELETE_LEVEL,
+    DELETE_TYPE,
+    RENAME_TYPE,
+    REPRICE_LEVEL,
+    SHIFT_LEVEL
+} from "./actionTypes";
 
 function types (state = [], {type, payload}) {
     switch (type) {
-        case ADD_TYPE: return state.concat([{name: payload.name, levels: [{max: null, price: 0}], revision: 0}]);
+        case ADD_TYPE:
+            return state.concat([{
+                name: payload.name,
+                levels: [{max: null, price: 0}],
+                defaultActive: true,
+                revision: 0
+            }]);
         case RENAME_TYPE: return state.map((type, index) =>
             index === payload.typeIndex
                 ? Object.assign({}, type, {name: payload.newName})
                 : type
         );
+        case CHANGE_DEFAULT_STATE_OF_TYPE:
+            return state.map((type, index) =>
+                index === payload.typeIndex
+                    ? Object.assign({}, type, {defaultActive: payload.newDefaultActive})
+                    : type
+            );
         case DELETE_TYPE: return state.filter((type, index) => index !== payload.typeIndex);
         case ADD_LEVEL: return state.map((type, index) =>
             index === payload.typeIndex
