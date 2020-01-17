@@ -26,7 +26,7 @@ function LevelEditor({max, price, typeIndex, levelIndex, repriceLevel, shiftLeve
                     pattern={'^\\d{1,3}((\\.\\d{3})*|(\\d{3})*)(,\\d{1,3})?$'}
                     value={maxState}
                     onBlur={() => shiftLevel(typeIndex, levelIndex, maxState ? maxState.replace(/\./g, '').replace(',', '.') - 0 : null)}
-                    onChange={e => setMaxState(formatNumber(e.target.value, 1))}
+                    onChange={e => setMaxState(formatNumber(e.target.value, 2))}
                 />
                 <div className="unit">kWh</div>
             </div>
