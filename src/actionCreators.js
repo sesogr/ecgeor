@@ -1,9 +1,25 @@
-import {ADD_LEVEL, ADD_TYPE, DELETE_LEVEL, DELETE_TYPE, RENAME_TYPE, REPRICE_LEVEL, SHIFT_LEVEL} from "./actionTypes";
+import {
+    ADD_LEVEL,
+    ADD_TYPE,
+    CHANGE_DEFAULT_STATE_OF_TYPE,
+    DELETE_LEVEL,
+    DELETE_TYPE,
+    RENAME_TYPE,
+    REPRICE_LEVEL,
+    SHIFT_LEVEL
+} from "./actionTypes";
 
 export function addType(name) {
     return {
         type: ADD_TYPE,
         payload: {name}
+    };
+}
+
+export function changeDefaultStateOfType(typeIndex, newDefaultActive) {
+    return {
+        type: CHANGE_DEFAULT_STATE_OF_TYPE,
+        payload: {typeIndex, newDefaultActive}
     };
 }
 

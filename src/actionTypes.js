@@ -1,4 +1,5 @@
 export const ADD_TYPE = 'ADD_TYPE';
+export const CHANGE_DEFAULT_STATE_OF_TYPE = 'CHANGE_DEFAULT_STATE_OF_TYPE';
 export const RENAME_TYPE = 'RENAME_TYPE';
 export const DELETE_TYPE = 'DELETE_TYPE';
 export const ADD_LEVEL = 'ADD_LEVEL';

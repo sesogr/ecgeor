@@ -8,13 +8,7 @@ import calcGauApp from "./reducers";
 
 window.store = createStore(
     calcGauApp,
-    {
-        types: [
-            {name: "foo", levels: [{max: 1000, price: 3.45}, {max: null, price: 2.34}]},
-            {name: "bar", levels: [{max: null, price: 1.23}]},
-            {name: "baz", levels: [{max: 1000, price: 3.45}, {max: 20000, price: 2.34}, {max: null, price: 1.23}]}
-        ]
-    }
+    window.initialStoreState || {types: []}
 );
 ReactDOM.render(
     <Provider store={window.store}>
