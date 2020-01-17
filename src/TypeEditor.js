@@ -15,7 +15,7 @@ function TypeEditor({name, defaultActive, levels, revision = 0, typeIndex, renam
                 </label>
             </td>
             {levels.map((level, index) => <LevelEditor key={revision + ':' + index} typeIndex={typeIndex} levelIndex={index}/>)}
-            <td className="delete"><button onClick={() => deleteType(typeIndex)}>×</button></td>
+            <td className="delete"><button onClick={() => deleteType(typeIndex)} tabIndex={-1}>×</button></td>
         </tr>
     );
 }
