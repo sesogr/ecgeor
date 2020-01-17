@@ -2,7 +2,7 @@ import {ADD_LEVEL, ADD_TYPE, DELETE_LEVEL, DELETE_TYPE, RENAME_TYPE, REPRICE_LEV
 
 function types (state = [], {type, payload}) {
     switch (type) {
-        case ADD_TYPE: return state.concat([{name: payload.name, levels: [{max: null, price: 0}]}]);
+        case ADD_TYPE: return state.concat([{name: payload.name, levels: [{max: null, price: 0}], revision: 0}]);
         case RENAME_TYPE: return state.map((type, index) =>
             index === payload.typeIndex
                 ? Object.assign({}, type, {name: payload.newName})
@@ -30,10 +30,15 @@ function types (state = [], {type, payload}) {
                     {},
                     type,
                     {
-                        levels: type.levels.map((level, index) =>
-                            index === payload.levelIndex
-                                ? Object.assign({}, level, {max: payload.newMax})
-                                : level
+                        levels: type.levels.slice(0, payload.levelIndex).concat(
+                            Object.assign({}, type.levels[payload.levelIndex], {max: payload.newMax}),
+                            payload.newMax !== null
+                                ? type.levels.slice(payload.levelIndex + 1).concat(
+                                    type.levels[payload.levelIndex].max === null
+                                        ? [{max: null, price: 0}]
+                                        : []
+                                )
+                                : []
                         )
                     }
                 )
@@ -60,7 +65,15 @@ function types (state = [], {type, payload}) {
                     {},
                     type,
                     {
-                        levels: type.levels.filter((level, index) => index !== payload.levelIndex)
+                        levels: type.levels.length > 1
+                            ? type.levels.slice(0, payload.levelIndex)
+                                .concat(type.levels.slice(payload.levelIndex + 1))
+                                .map((level, index, levels) => index === levels.length - 1
+                                    ? Object.assign({}, level, {max: null})
+                                    : level
+                                )
+                            : [{max: null, price: 0}],
+                        revision: (type.revision || 0) + 1
                     }
                 )
                 : type
