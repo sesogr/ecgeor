@@ -6,7 +6,7 @@ import {Provider} from "react-redux";
 import {createStore} from 'redux';
 import calcGauApp from "./reducers";
 
-const store = createStore(
+window.store = createStore(
     calcGauApp,
     {
         types: [
@@ -17,7 +17,7 @@ const store = createStore(
     }
 );
 ReactDOM.render(
-    <Provider store={store}>
+    <Provider store={window.store}>
         <App/>
     </Provider>,
     document.getElementById('root')
