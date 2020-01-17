@@ -45,26 +45,31 @@ function types (state = [], {type, payload}) {
                 )
                 : type
         );
-        case SHIFT_LEVEL: return state.map((type, index) =>
-            index === payload.typeIndex
-                ? Object.assign(
-                    {},
-                    type,
-                    {
-                        levels: type.levels.slice(0, payload.levelIndex).concat(
-                            Object.assign({}, type.levels[payload.levelIndex], {max: payload.newMax}),
-                            payload.newMax !== null
-                                ? type.levels.slice(payload.levelIndex + 1).concat(
-                                    type.levels[payload.levelIndex].max === null
-                                        ? [{max: null, price: 0}]
-                                        : []
-                                )
-                                : []
-                        )
-                    }
-                )
-                : type
-        );
+        case SHIFT_LEVEL: return state.map((type, index) => {
+            if (index !== payload.typeIndex) {
+                return type;
+            }
+            const levels = type.levels.slice(0, payload.levelIndex).concat(
+                Object.assign({}, type.levels[payload.levelIndex], {max: payload.newMax}),
+                payload.newMax !== null
+                    ? type.levels.slice(payload.levelIndex + 1).concat(
+                    type.levels[payload.levelIndex].max === null
+                        ? [{max: null, price: 0}]
+                        : []
+                    )
+                    : []
+            );
+            const sortedLevels = levels.concat().sort((a, b) => (a.max || 1e20) - (b.max || 1e20));
+            const wasAlreadySorted = sortedLevels.map(l => l.max).join(':') === levels.map(l => l.max).join(':');
+            return Object.assign(
+                {},
+                type,
+                {
+                    levels: sortedLevels,
+                    revision: (type.revision || 0) + (wasAlreadySorted ? 0 : 1)
+                }
+            );
+        });
         case REPRICE_LEVEL: return state.map((type, index) =>
             index === payload.typeIndex
                 ? Object.assign(
