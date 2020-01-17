@@ -1,26 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {connect} from "react-redux";
+import TypeEditor from "./TypeEditor";
+import {addType} from "./actionCreators";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+function App({types, addType}) {
+    const createTypeEditor = e => {
+        addType(e.target.value);
+        e.target.value = '';
+    };
+    return (
+        <table id="d486574ef229">
+            <tbody>
+            {types.map((type, index) => <TypeEditor key={index} typeIndex={index}/>)}
+            <tr>
+                <td className="type new">
+                    <input placeholder="neuer Typ" type="text" onChange={createTypeEditor}/>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    );
 }
 
-export default App;
+export default connect(
+    state => ({types: state.types}),
+    {addType}
+)(App);

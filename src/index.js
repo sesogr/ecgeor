@@ -2,11 +2,23 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
+import {Provider} from "react-redux";
+import {createStore} from 'redux';
+import calcGauApp from "./reducers";
 
-ReactDOM.render(<App />, document.getElementById('root'));
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+window.store = createStore(
+    calcGauApp,
+    {
+        types: [
+            {name: "foo", levels: [{max: 1000, price: 3.45}, {max: null, price: 2.34}]},
+            {name: "bar", levels: [{max: null, price: 1.23}]},
+            {name: "baz", levels: [{max: 1000, price: 3.45}, {max: 20000, price: 2.34}, {max: null, price: 1.23}]}
+        ]
+    }
+);
+ReactDOM.render(
+    <Provider store={window.store}>
+        <App/>
+    </Provider>,
+    document.getElementById('root')
+);
