@@ -13,6 +13,7 @@
 #d486574ef229 .delete {padding: 0 8px 0 0; background-color: transparent; border-top-right-radius: 8px; border-bottom-right-radius: 8px;}
 #d486574ef229 .type input {padding: 0 4px; width: 200px; line-height: 57px; height: 57px; border-top-left-radius: 8px; border-bottom-left-radius: 8px;}
 #d486574ef229 .type.new input {border-radius: 8px;}
+#d486574ef229 .flag {line-height: 25px; text-align: center;}
 #d486574ef229 .level button {width: 17px; line-height: 49px; height: 49px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; float: right;}
 #d486574ef229 .delete button {width: 21px; line-height: 57px; height: 57px; border-top-right-radius: 8px; border-bottom-right-radius: 8px;}
 #d486574ef229 .level div {margin-right: 25px;}
