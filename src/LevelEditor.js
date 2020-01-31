@@ -5,7 +5,11 @@ import {deleteLevel, repriceLevel, shiftLevel} from "./actionCreators";
 
 function LevelEditor({max, price, typeIndex, levelIndex, repriceLevel, shiftLevel, deleteLevel, exclude}) {
     const formatNumber = (n, p) => {
-        const value = ('' + n).replace(/^0+(.)/, '$1').replace(/[^\d,]+/g, '').replace(/(,[^,]*),.*/g, '$1').replace(/^,/, '0,');
+        const value = ('' + n)
+            .replace(/^0+(.)/, '$1')
+            .replace(/[^\d,]+/g, '')
+            .replace(/(,[^,]*),.*/g, '$1')
+            .replace(/^,/, '0,');
         return value.match(/^0?$/)
             ? value
             : value[0]
@@ -23,7 +27,7 @@ function LevelEditor({max, price, typeIndex, levelIndex, repriceLevel, shiftLeve
         } else {
             shiftLevel(typeIndex, levelIndex, newMax);
         }
-    }
+    };
     return (
         <td className="level">
             <button tabIndex={-1} onClick={() => deleteLevel(typeIndex, levelIndex)}>×</button>
@@ -44,7 +48,9 @@ function LevelEditor({max, price, typeIndex, levelIndex, repriceLevel, shiftLeve
                     placeholder={'0'}
                     pattern={'^\\d{1,3}((\\.\\d{3})*|(\\d{3})*)(,\\d{1,3})?$'}
                     value={priceState}
-                    onBlur={() => repriceLevel(typeIndex, levelIndex, priceState.replace(/\./g, '').replace(',', '.') - 0)}
+                    onBlur={() =>
+                        repriceLevel(typeIndex, levelIndex, priceState.replace(/\./g, '').replace(',', '.') - 0)
+                    }
                     onChange={e => setPriceState(formatNumber(e.target.value, 3))}
                 />
                 <div className="unit">¢/kWh</div>
