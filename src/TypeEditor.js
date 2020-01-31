@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import {connect} from "react-redux";
 import {changeDefaultStateOfType, deleteType, renameType} from "./actionCreators";
@@ -17,14 +17,16 @@ function TypeEditor(
         exclude
     }
 ) {
+    const [nameState, setNameState] = useState(name);
     return (
         <tr>
             <td className="type">
                 <input
                     autoFocus={true}
                     type="text"
-                    value={name}
-                    onChange={e => renameType(typeIndex, e.target.value)}
+                    value={nameState}
+                    onBlur={() => renameType(typeIndex, nameState)}
+                    onChange={e => setNameState(e.target.value)}
                 />
             </td>
             <td className="flag">
