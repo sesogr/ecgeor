@@ -5,14 +5,17 @@ import TypeEditor from "./TypeEditor";
 import {addType} from "./actionCreators";
 
 function App({types, addType}) {
+    const exclude = types.map(t => t.name);
     const createTypeEditor = e => {
-        addType(e.target.value);
-        e.target.value = '';
+        if (exclude.indexOf(e.target.value) < 0) {
+            addType(e.target.value);
+            e.target.value = '';
+        }
     };
     return (
         <table id="d486574ef229">
             <tbody>
-            {types.map((type, index) => <TypeEditor key={index} typeIndex={index} exclude={types.map(t => t.name)}/>)}
+            {types.map((type, index) => <TypeEditor key={index} typeIndex={index} exclude={exclude}/>)}
             <tr>
                 <td className="type new">
                     <input placeholder="neuer Typ" type="text" onChange={createTypeEditor}/>
