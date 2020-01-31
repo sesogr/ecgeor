@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import {changeDefaultStateOfType, deleteType, renameType} from "./actionCreators";
 import LevelEditor from "./LevelEditor";
 
-function TypeEditor({name, defaultActive, levels, revision = 0, typeIndex, renameType, deleteType, changeDefaultStateOfType}) {
+function TypeEditor({name, defaultActive, levels, revision = 0, typeIndex, renameType, deleteType, changeDefaultStateOfType, exclude}) {
     return (
         <tr>
             <td className="type"><input autoFocus={true} type="text" value={name} onChange={e => renameType(typeIndex, e.target.value)}/></td>

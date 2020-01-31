@@ -12,7 +12,7 @@ function App({types, addType}) {
     return (
         <table id="d486574ef229">
             <tbody>
-            {types.map((type, index) => <TypeEditor key={index} typeIndex={index}/>)}
+            {types.map((type, index) => <TypeEditor key={index} typeIndex={index} exclude={types.map(t => t.name)}/>)}
             <tr>
                 <td className="type new">
                     <input placeholder="neuer Typ" type="text" onChange={createTypeEditor}/>
