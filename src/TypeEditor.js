@@ -24,7 +24,7 @@ function TypeEditor(
         } else {
             renameType(typeIndex, nameState);
         }
-    }
+    };
     return (
         <tr>
             <td className="type">
