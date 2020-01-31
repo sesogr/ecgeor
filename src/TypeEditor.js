@@ -18,6 +18,13 @@ function TypeEditor(
     }
 ) {
     const [nameState, setNameState] = useState(name);
+    const nameChangeComplete = () => {
+        if (exclude.indexOf(nameState) >= 0) {
+            setNameState(name);
+        } else {
+            renameType(typeIndex, nameState);
+        }
+    }
     return (
         <tr>
             <td className="type">
@@ -25,7 +32,7 @@ function TypeEditor(
                     autoFocus={true}
                     type="text"
                     value={nameState}
-                    onBlur={() => renameType(typeIndex, nameState)}
+                    onBlur={nameChangeComplete}
                     onChange={e => setNameState(e.target.value)}
                 />
             </td>
