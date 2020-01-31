@@ -17,16 +17,12 @@ function TypeEditor(
         exclude
     }
 ) {
+    const nameChange = e => {
+        renameType(typeIndex, e.target.value);
+    };
     return (
         <tr>
-            <td className="type">
-                <input
-                    autoFocus={true}
-                    type="text"
-                    value={name}
-                    onChange={e => renameType(typeIndex, e.target.value)}
-                />
-            </td>
+            <td className="type"><input autoFocus={true} type="text" value={name} onChange={nameChange}/></td>
             <td className="flag">
                 <label title="Standardmäßig aktiv?">
                     aktiv?<br/>
